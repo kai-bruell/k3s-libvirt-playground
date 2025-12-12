@@ -1,0 +1,37 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "git": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#git",
+      "source": "nixpkg"
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2025-12-09T08:49:39Z",
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9?lastModified=1765270179"
+    },
+    "go-task": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#go-task",
+      "source": "nixpkg"
+    },
+    "libvirt": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#libvirt",
+      "source": "nixpkg"
+    },
+    "packer": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#packer",
+      "source": "nixpkg"
+    },
+    "qemu": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#qemu",
+      "source": "nixpkg"
+    },
+    "sshpass": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#sshpass",
+      "source": "nixpkg"
+    },
+    "terraform": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#terraform",
+      "source": "nixpkg"
+    }
+  }
+}

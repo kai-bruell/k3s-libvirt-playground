@@ -1,0 +1,15 @@
+{
+  "packages": [
+    "terraform",
+    "go-task",
+    "git",
+    "qemu",
+    "sshpass",
+    "libvirt"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Infrastructure-as-Code Terraform K3S Environment started.'"
+    ]
+  }
+}
