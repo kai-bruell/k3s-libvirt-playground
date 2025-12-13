@@ -1,5 +1,5 @@
 # =============================================================================
-# TERRAFORM CONFIG: K3S CLUSTER MIT LIBVIRT
+# TERRAFORM CONFIG: K3S CLUSTER WITH LIBVIRT
 # =============================================================================
 
 terraform {

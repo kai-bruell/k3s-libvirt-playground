@@ -50,7 +50,7 @@ variable "worker_count" {
 variable "control_plane_memory" {
   description = "Memory allocation for control plane (MB)"
   type        = number
-  default     = 4096 # 4 GB - K3s control plane needs more RAM for etcd + API server
+  default     = 2048 # 2 GB - Minimal for K3s control plane
 
   # Recommended minimum: 2048 MB (2 GB)
   # Increase for larger clusters or heavier workloads
@@ -59,16 +59,16 @@ variable "control_plane_memory" {
 variable "control_plane_vcpus" {
   description = "vCPU count for control plane"
   type        = number
-  default     = 2
+  default     = 1
 
-  # Recommended minimum: 2 vCPUs
+  # Recommended minimum: 1 vCPU
   # K3s control plane handles scheduling, API requests, and controller processes
 }
 
 variable "worker_memory" {
   description = "Memory allocation per worker node (MB)"
   type        = number
-  default     = 2048 # 2 GB per worker
+  default     = 1024 # 1 GB per worker
 
   # Adjust based on expected pod workloads
   # More memory allows running more/larger containers
@@ -77,7 +77,7 @@ variable "worker_memory" {
 variable "worker_vcpus" {
   description = "vCPU count per worker node"
   type        = number
-  default     = 2
+  default     = 1
 
   # Workers run application pods, so CPU requirements depend on workload
   # More vCPUs = better performance for CPU-intensive applications
@@ -92,9 +92,9 @@ variable "worker_vcpus" {
 variable "control_plane_disk_size" {
   description = "Disk size for control plane VM (bytes)"
   type        = number
-  default     = 42949672960 # 40 GiB
+  default     = 21474836480 # 20 GiB
 
-  # Control plane needs more space for:
+  # Control plane needs space for:
   # - Container images for system components
   # - etcd database (cluster state)
   # - Logs and temporary files
@@ -104,7 +104,7 @@ variable "control_plane_disk_size" {
 variable "worker_disk_size" {
   description = "Disk size for each worker node VM (bytes)"
   type        = number
-  default     = 32212254720 # 30 GiB
+  default     = 21474836480 # 20 GiB
 
   # Workers store:
   # - Container images for application pods
