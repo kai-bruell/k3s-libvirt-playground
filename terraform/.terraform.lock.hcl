@@ -3,7 +3,7 @@
 
 provider "registry.terraform.io/dmacvicar/libvirt" {
   version     = "0.8.3"
-  constraints = "~> 0.8.0"
+  constraints = "~> 0.8.3"
   hashes = [
     "h1:Tttxr3E9O75MM+dDmq5sYHQEw29PwtIj+XDj/5drdfE=",
     "zh:06ff0169beafd1891dc5a30616983abd32004a4f570d1d3dbb5851d84bd1c007",
@@ -24,7 +24,8 @@ provider "registry.terraform.io/dmacvicar/libvirt" {
 }
 
 provider "registry.terraform.io/hashicorp/local" {
-  version = "2.6.1"
+  version     = "2.6.1"
+  constraints = "~> 2.6.0"
   hashes = [
     "h1:LMoX85QLTgCCqRuy2aXoz47P7gZ4WRPSA00fUPC/Rho=",
     "zh:10050d08f416de42a857e4b6f76809aae63ea4ec6f5c852a126a915dede814b4",
@@ -44,7 +45,7 @@ provider "registry.terraform.io/hashicorp/local" {
 
 provider "registry.terraform.io/hashicorp/random" {
   version     = "3.7.2"
-  constraints = "~> 3.6"
+  constraints = "~> 3.7.0"
   hashes = [
     "h1:356j/3XnXEKr9nyicLUufzoF4Yr6hRy481KIxRVpK0c=",
     "zh:14829603a32e4bc4d05062f059e545a91e27ff033756b48afbae6b3c835f508f",
@@ -64,7 +65,7 @@ provider "registry.terraform.io/hashicorp/random" {
 
 provider "registry.terraform.io/hashicorp/tls" {
   version     = "4.1.0"
-  constraints = "~> 4.0"
+  constraints = "~> 4.1.0"
   hashes = [
     "h1:Ka8mEwRFXBabR33iN/WTIEW6RP0z13vFsDlwn11Pf2I=",
     "zh:14c35d89307988c835a7f8e26f1b83ce771e5f9b41e407f86a644c0152089ac2",
