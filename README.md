@@ -47,7 +47,7 @@ This project uses [Devbox](https://www.jetify.com/devbox) for reproducible envir
 curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
-Devbox auto-installs: Terraform, libvirt, QEMU, git, go-task, sshpass
+Devbox auto-installs: Terraform, libvirt, QEMU, git, go-task, sshpass, kubectl
 
 ---
 
@@ -69,7 +69,7 @@ devbox shell
 ./scripts/initialize.sh
 ```
 
-This script: builds K3s base image, initializes Terraform, creates cluster, and displays cluster info.
+This script: builds K3s base image, initializes Terraform, creates cluster, exports kubeconfig, and displays cluster info.
 
 **Manual:**
 
@@ -80,7 +80,15 @@ terraform apply
 terraform output cluster  # View cluster info
 ```
 
-### 3. SSH Access
+### 3. Use kubectl
+
+```bash
+# Kubeconfig is auto-exported to project root
+export KUBECONFIG=$(pwd)/kubeconfig
+kubectl get nodes
+```
+
+### 4. SSH Access (optional)
 
 ```bash
 # Control plane
@@ -88,16 +96,6 @@ terraform output -json cluster | jq -r '.control_plane.ssh' | bash
 
 # Worker 1
 terraform output -json cluster | jq -r '.workers[0].ssh' | bash
-```
-
-### 4. Configure kubectl
-
-```bash
-ssh -i ../k3s_cluster_id_rsa -o StrictHostKeyChecking=no debian@192.168.56.10 \
-  'sudo cat /etc/rancher/k3s/k3s.yaml' > k3s.yaml
-sed -i 's/127.0.0.1/192.168.56.10/g' k3s.yaml
-export KUBECONFIG=$(pwd)/k3s.yaml
-kubectl get nodes
 ```
 
 ---

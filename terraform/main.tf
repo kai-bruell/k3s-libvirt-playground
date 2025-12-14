@@ -261,3 +261,41 @@ resource "libvirt_domain" "worker" {
   # Ensure worker VMs are created only after control plane is up
   depends_on = [libvirt_domain.control_plane]
 }
+
+# -----------------------------------------------------------------------------
+# KUBECONFIG EXPORT
+# -----------------------------------------------------------------------------
+# Automatically exports kubeconfig from control plane to project root
+
+resource "null_resource" "export_kubeconfig" {
+  provisioner "local-exec" {
+    command = <<-EOT
+      echo "Waiting for K3s to be ready..."
+      max_attempts=60
+      attempt=0
+      while [ $attempt -lt $max_attempts ]; do
+        if ssh -i ${abspath(path.module)}/../k3s_cluster_id_rsa \
+               -o StrictHostKeyChecking=no \
+               -o ConnectTimeout=5 \
+               debian@${var.control_plane_ip} \
+               'sudo test -f /etc/rancher/k3s/k3s.yaml' 2>/dev/null; then
+          break
+        fi
+        sleep 5
+        attempt=$((attempt+1))
+      done
+
+      echo "Exporting kubeconfig..."
+      ssh -i ${abspath(path.module)}/../k3s_cluster_id_rsa \
+          -o StrictHostKeyChecking=no \
+          debian@${var.control_plane_ip} \
+          'sudo cat /etc/rancher/k3s/k3s.yaml' | \
+          sed 's/127.0.0.1/${var.control_plane_ip}/g' > ${abspath(path.module)}/../kubeconfig
+
+      chmod 600 ${abspath(path.module)}/../kubeconfig
+      echo "Kubeconfig exported to: ../kubeconfig"
+    EOT
+  }
+
+  depends_on = [libvirt_domain.control_plane]
+}

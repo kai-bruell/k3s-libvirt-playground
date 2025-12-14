@@ -23,6 +23,7 @@ done
 cd ..
 sudo rm -rf libvirt-pool/
 rm -rf k3s_cluster_id_rsa
+rm -rf kubeconfig
 rm -rf terraform/.terraform/
 rm -rf terraform/terraform.tfstate
 

@@ -13,6 +13,10 @@
       "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#go-task",
       "source": "nixpkg"
     },
+    "kubectl": {
+      "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#kubectl",
+      "source": "nixpkg"
+    },
     "libvirt": {
       "resolved": "github:NixOS/nixpkgs/677fbe97984e7af3175b6c121f3c39ee5c8d62c9#libvirt",
       "source": "nixpkg"

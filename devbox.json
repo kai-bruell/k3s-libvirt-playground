@@ -5,11 +5,13 @@
     "git",
     "qemu",
     "sshpass",
-    "libvirt"
+    "libvirt",
+    "kubectl"
   ],
   "shell": {
     "init_hook": [
-      "echo 'Infrastructure-as-Code Terraform K3S Environment started.'"
+      "echo 'Infrastructure-as-Code Terraform K3S Environment started.'",
+      "if [ -f kubeconfig ]; then export KUBECONFIG=$(pwd)/kubeconfig && echo 'KUBECONFIG set to $(pwd)/kubeconfig'; fi"
     ]
   }
 }
